@@ -2,10 +2,13 @@
 
 require_once "DB/Database.php";
 require_once "Controller/SelecoesController.php";
+require_once "Controller/UsuariosController.php";
 
 
 
 $selecoesController = new SelecoesController($pdo);
+$usuariosController = new UsuariosController($pdo);
+
 
 
 
@@ -98,6 +101,7 @@ $selecoesController = new SelecoesController($pdo);
     </div>
     <?php
     $selecoes = $selecoesController->listar();
+    $usuarios = $usuariosController->listar();
     ?>
 </body>
 </html>

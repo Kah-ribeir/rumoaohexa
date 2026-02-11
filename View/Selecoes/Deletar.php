@@ -1,7 +1,7 @@
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/rumoaohexa/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/rumoaohexa/Controller/SelecoesController.php";
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/DB/Database.php";
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Controller/SelecoesController.php";
 
 
 $SelecoesController = new SelecoesController($pdo);

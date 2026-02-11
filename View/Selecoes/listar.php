@@ -2,8 +2,10 @@
 
 
         if (empty($selecoes)) {
+            echo "<div>";
             echo "<p>Nenhuma seleção cadastrada!</p>";
             echo "<a href='View/Selecoes/cadastrar.php?'>Cadastrar</a>";
+             echo "</div>";
             return;
         }
 

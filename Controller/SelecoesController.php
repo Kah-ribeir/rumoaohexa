@@ -1,6 +1,6 @@
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/rumoaohexa/Model/selecoesModel.php";
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Model/selecoesModel.php";
 
 class SelecoesController {
     private $selecoesModel;
@@ -10,14 +10,14 @@ class SelecoesController {
 
     public function listar () {
         $selecoes = $this ->selecoesModel ->buscarTodos();
-        include_once "C:/Turma1/xampp/htdocs/rumoaohexa/View/Selecoes/listar.php";
+        include_once "C:/Turma2/xampp/htdocs/rumoaohexa/View/Selecoes/listar.php";
         return;
     }
 
 
  public function listarindividual ($id) {
         $selecoes = $this ->selecoesModel ->buscarIndividual($id);
-        include_once "C:/Turma1/xampp/htdocs/rumoaohexa/View/Selecoes/listar.php";
+        include_once "C:/Turma2/xampp/htdocs/rumoaohexa/View/Selecoes/listar.php";
         return;
     }
 

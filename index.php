@@ -4,11 +4,15 @@ require_once "DB/Database.php";
 require_once "Controller/SelecoesController.php";
 require_once "Controller/UsuariosController.php";
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Controller/GruposController.php";
+require_once "Controller/JogosController.php";
+
 
 
 $selecoesController = new SelecoesController($pdo);
 $usuariosController = new UsuariosController($pdo);
 $gruposController  = new GruposController($pdo);
+$jogosController = new JogosController($pdo);
+
 
 
 
@@ -105,6 +109,7 @@ $gruposController  = new GruposController($pdo);
     $usuarios = $usuariosController->listar();
     $grupos  = $gruposController->listar();
 
+    $jogos = $jogosController->listar();
     ?>
 </body>
 </html>

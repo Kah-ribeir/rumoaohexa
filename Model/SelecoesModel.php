@@ -13,7 +13,7 @@ class SelecoesModel {
 
      public function buscarIndividual ($id) {
         $stmt = $this->pdo->query ("SELECT * FROM selecoes where id = $id");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
 public function cadastrar($nome, $grupo, $continente){

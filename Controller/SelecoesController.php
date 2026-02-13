@@ -17,8 +17,8 @@ class SelecoesController {
 
  public function listarindividual ($id) {
         $selecoes = $this ->selecoesModel ->buscarIndividual($id);
-        include_once "C:/Turma2/xampp/htdocs/rumoaohexa/View/Selecoes/listar.php";
-        return;
+        //include_once "C:/Turma2/xampp/htdocs/rumoaohexa/View/Selecoes/listar.php";
+        return $selecoes;
     }
 
 

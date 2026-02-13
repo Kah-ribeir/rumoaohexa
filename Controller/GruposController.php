@@ -6,7 +6,7 @@ require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Model/GruposModel.php";
 class GruposController {
 
     private $grupoModel;
-    private $selecoesModel;
+   
 
     public function __construct($pdo) {
         $this->grupoModel = new GrupoModel($pdo);
@@ -41,10 +41,5 @@ class GruposController {
         return $this->grupoModel->deletar($id);
     }
 
-    public function listarSelecoesGrupo($grupo_id) {
-        $selecoes = $this->GruposModel->listarPorGrupo($grupo_id);
-        include_once "C:/Turma2/xampp/htdocs/rumoaohexa/View/Grupos/selecoesGrupo.php";
-        return;
-    }
 }
 ?>

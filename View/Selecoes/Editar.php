@@ -8,9 +8,7 @@ $SelecoesController = new SelecoesController($pdo);
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $selecoes = $SelecoesController->buscarIndividual($id);
-
-
+    $selecoes = $SelecoesController->listarindividual($id);
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php
 
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Model/GruposModel.php";
-require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Model/selecoesModel.php";
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Model/GruposModel.php";
 
 class GruposController {
 
@@ -10,7 +10,7 @@ class GruposController {
 
     public function __construct($pdo) {
         $this->grupoModel = new GrupoModel($pdo);
-        $this->selecoesModel = new SelecoesModel($pdo);
+        $this->gruposModel = new GrupoModel($pdo);
     }
 
     
@@ -42,7 +42,7 @@ class GruposController {
     }
 
     public function listarSelecoesGrupo($grupo_id) {
-        $selecoes = $this->selecoesModel->listarPorGrupo($grupo_id);
+        $selecoes = $this->GruposModel->listarPorGrupo($grupo_id);
         include_once "C:/Turma2/xampp/htdocs/rumoaohexa/View/Grupos/selecoesGrupo.php";
         return;
     }

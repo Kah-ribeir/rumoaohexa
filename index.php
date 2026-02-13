@@ -3,11 +3,14 @@
 require_once "DB/Database.php";
 require_once "Controller/SelecoesController.php";
 require_once "Controller/UsuariosController.php";
+require_once "Controller/JogosController.php";
 
 
 
 $selecoesController = new SelecoesController($pdo);
 $usuariosController = new UsuariosController($pdo);
+$jogosController = new JogosController($pdo);
+
 
 
 
@@ -102,6 +105,7 @@ $usuariosController = new UsuariosController($pdo);
     <?php
     $selecoes = $selecoesController->listar();
     $usuarios = $usuariosController->listar();
+    $jogos = $jogosController->listar();
     ?>
 </body>
 </html>

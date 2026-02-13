@@ -6,7 +6,7 @@ require_once "Controller/UsuariosController.php";
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Controller/GruposController.php";
 require_once "Controller/JogosController.php";
 require_once "Controller/ResultadosController.php";
-
+require_once "Controller/ClassificacaoController.php";
 
 
 $selecoesController = new SelecoesController($pdo);
@@ -14,7 +14,7 @@ $usuariosController = new UsuariosController($pdo);
 $gruposController  = new GruposController($pdo);
 $jogosController = new JogosController($pdo);
 $resultadosController = new ResultadosController($pdo);
-
+$classificacaoController = new ClassificacaoController($pdo);
 
 
 
@@ -28,75 +28,7 @@ $resultadosController = new ResultadosController($pdo);
     <meta charset="UTF-8">
     <title>Copa do Mundo</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            height: 100vh;
-            background: radial-gradient(circle at top, #0f3d2e, #061a14);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
-
-        .card {
-            width: 900px;
-            height: 500px;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.15),
-                rgba(255, 255, 255, 0.05)
-            );
-            border-radius: 20px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 60px rgba(0, 255, 150, 0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .trofeu {
-            font-size: 90px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 42px;
-            letter-spacing: 3px;
-            margin: 0;
-        }
-
-        h2 {
-            font-size: 16px;
-            font-weight: normal;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            color: #8fffd2;
-        }
-
-        .anel {
-            position: absolute;
-            width: 420px;
-            height: 420px;
-            border: 2px solid rgba(0, 255, 170, 0.3);
-            border-radius: 50%;
-            animation: girar 20s linear infinite;
-        }
-
-        @keyframes girar {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    
 </head>
 <body>
     <div class="card">
@@ -107,12 +39,13 @@ $resultadosController = new ResultadosController($pdo);
         <h2>SISTEMA DE GERENCIAMENTO</h2>
     </div>
     <?php
-    $selecoes = $selecoesController->listar();
-    $usuarios = $usuariosController->listar();
-    $grupos  = $gruposController->listar();
+    // $selecoes = $selecoesController->listar();
+    // $usuarios = $usuariosController->listar();
+    // $grupos  = $gruposController->listar();
 
-    $jogos = $jogosController->listar();
-    $resultados = $resultadosController->listar();
+    // $jogos = $jogosController->listar();
+    // $resultados = $resultadosController->listar();
+    $classificacaoController->exibir(1);
     ?>
 </body>
 </html>

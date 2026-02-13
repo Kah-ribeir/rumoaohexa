@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar cadastro de resultado</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: radial-gradient(circle at top, #0f3d2e, #061a14);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        form {
+            width: 420px;
+            padding: 30px 40px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 255, 170, 0.4);
+            box-shadow: 0 0 40px rgba(0, 255, 150, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background: linear-gradient(135deg, #ffd369, #e6a800);
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #000;
+        }
+
+        input[type="submit"]:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form method="post">
+        <h1>⚽Cadastrar Resultados🥅</h1>
+
+        <label for="gol_mandante">Gols da Seleção Mandante</label>
+        <input type="text" name="gol_mandante" placeholder=" * gols" required>
+
+       <label for="gol_visitante">Gols da Seleção Visitante</label>
+        <input type="text" name="gol_visitante" placeholder=" * gols" required>
+
+
+        <input type="submit" value="CADASTRAR">
+    </form>
+
+</body>
+</html>
+
+
+<?php
+
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/DB/Database.php";
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Controller/ResultadosController.php";
+
+$ResultadosController = new ResultadosController($pdo);
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
+    $gol_mandante = $_POST ['gol_mandante'];
+    $gol_visitante = $_POST ['gol_visitante'];
+  
+
+    $ResultadosController->cadastrar($gol_mandante, $gol_visitante);
+
+    header('Location: ../../index.php');
+}
+
+
+?>

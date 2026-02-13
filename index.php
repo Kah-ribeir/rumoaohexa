@@ -4,12 +4,14 @@ require_once "DB/Database.php";
 require_once "Controller/SelecoesController.php";
 require_once "Controller/UsuariosController.php";
 require_once "Controller/JogosController.php";
+require_once "Controller/ResultadosController.php";
 
 
 
 $selecoesController = new SelecoesController($pdo);
 $usuariosController = new UsuariosController($pdo);
 $jogosController = new JogosController($pdo);
+$resultadosController = new ResultadosController($pdo);
 
 
 
@@ -106,6 +108,7 @@ $jogosController = new JogosController($pdo);
     $selecoes = $selecoesController->listar();
     $usuarios = $usuariosController->listar();
     $jogos = $jogosController->listar();
+    $resultados = $resultadosController->listar();
     ?>
 </body>
 </html>

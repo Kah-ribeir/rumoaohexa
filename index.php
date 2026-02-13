@@ -3,11 +3,12 @@
 require_once "DB/Database.php";
 require_once "Controller/SelecoesController.php";
 require_once "Controller/UsuariosController.php";
-
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Controller/GruposController.php";
 
 
 $selecoesController = new SelecoesController($pdo);
 $usuariosController = new UsuariosController($pdo);
+$gruposController  = new GruposController($pdo);
 
 
 
@@ -102,6 +103,8 @@ $usuariosController = new UsuariosController($pdo);
     <?php
     $selecoes = $selecoesController->listar();
     $usuarios = $usuariosController->listar();
+    $grupos  = $gruposController->listar();
+
     ?>
 </body>
 </html>

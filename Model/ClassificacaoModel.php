@@ -23,24 +23,7 @@ class ClassificacaoModel {
                          (j.selecao_mandante = s.id OR j.selecao_visitante = s.id) THEN 1
                     ELSE 0
                 END
-            ) as pontos,
-
-            SUM(
-                CASE 
-                    WHEN j.selecao_mandante = s.id THEN j.gols_mandante
-                    WHEN j.selecao_visitante = s.id THEN j.gols_visitante
-                    ELSE 0
-                END
-            ) as gols_marcados,
-
-            SUM(
-                CASE 
-                    WHEN j.selecao_mandante = s.id THEN j.gols_visitante
-                    WHEN j.selecao_visitante = s.id THEN j.gols_mandante
-                    ELSE 0
-                END
-            ) as gols_sofridos
-
+            ) as pontos
         FROM selecoes s
         LEFT JOIN jogos j 
             ON s.id = j.selecao_mandante 
@@ -48,15 +31,12 @@ class ClassificacaoModel {
 
         WHERE s.grupo = :grupo
         GROUP BY s.id
-        ORDER BY pontos DESC, 
-                 (gols_marcados - gols_sofridos) DESC, 
-                 gols_marcados DESC
-        ";
+        ORDER BY pontos DESC";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':grupo', $grupo);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

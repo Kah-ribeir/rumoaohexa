@@ -45,7 +45,11 @@ $classificacaoController = new ClassificacaoController($pdo);
 
     // $jogos = $jogosController->listar();
     // $resultados = $resultadosController->listar();
-    $classificacaoController->exibir(1);
+    $classificacao = $classificacaoController->exibir(4);
+
+  echo $classificacao['nome'];
+  echo $classificacao['grupo'];
+  echo $classificacao['pontos'];
     ?>
 </body>
 </html>

@@ -1,7 +1,6 @@
 <?php
 
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Model/GruposModel.php";
-require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Model/GruposModel.php";
 
 class GruposController {
 
@@ -10,7 +9,6 @@ class GruposController {
 
     public function __construct($pdo) {
         $this->grupoModel = new GrupoModel($pdo);
-        $this->gruposModel = new GrupoModel($pdo);
     }
 
     

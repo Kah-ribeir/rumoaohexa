@@ -1,29 +1,29 @@
 <?php
-require_once "../../Controller/ClassificacaoController.php";
-require_once "../../config/database.php";
 
-$grupo = $_GET['grupo'];
+if (empty($classificacoes)) {
+    echo "<div>";
+    echo "<p>Nenhuma classificação cadastrada!</p>";
+    echo "</div>";
+    return;
+}
 
-$controller = new ClassificacaoController($pdo);
-$classificacao = $controller->exibir($grupo);
+echo "<table border='1' cellpadding='5' cellspacing='0'>";
+echo "<tr><th>selecao</th><th>grupo</th><th>pontos</th><th>gols marcados</th><th>gols sofridos</th><th>saldo de gols</th></tr>";
+
+
 ?>
 
-<h2>Classificação - Grupo <?php echo $grupo; ?></h2>
 
-<table border="1">
+<?php foreach ($classificacoes as $classificacao) { ?>
     <tr>
-        <th>Seleção</th>
-        <th>Pontos</th>
-        <th>Saldo</th>
-        <th>Gols Marcados</th>
+        <td><?= $classificacao['selecao'] ?></td>
+        <td><?= $classificacao['grupo'] ?></td>
+        <td><?= $classificacao['pontos'] ?></td>
+        <td><?= $classificacao['gols_marcados'] ?></td>
+        <td><?= $classificacao['gols_sofridos'] ?></td>
+        <td><?= $classificacao['saldo_gols'] ?></td>
     </tr>
+<?php } ?>
 
-    <?php foreach ($classificacao as $time): ?>
-    <tr>
-        <td><?= $time['nome'] ?></td>
-        <td><?= $time['pontos'] ?? 0 ?></td>
-        <td><?= ($time['gols_marcados'] - $time['gols_sofridos']) ?></td>
-        <td><?= $time['gols_marcados'] ?? 0 ?></td>
-    </tr>
-    <?php endforeach; ?>
+</tbody>
 </table>

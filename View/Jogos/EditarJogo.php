@@ -17,50 +17,138 @@
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/DB/Database.php";
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Controller/JogosController.php";
 
-
 $JogosController = new JogosController($pdo);
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $jogos = $JogosController->listarindividual($id);
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar jogos</title>
+    <title>Editar Jogo</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #8fb6d9, #6fa0c7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            background-color: #f2f2f2;
+            padding: 30px 40px;
+            border-radius: 20px;
+            width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #6fa0c7;
+            box-shadow: 0 0 5px rgba(111, 160, 199, 0.5);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background-color: #6fa0c7;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4e85b3;
+        }
+
+        .btn-voltar {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            text-decoration: none;
+            background-color: #f2f2f2;
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .btn-voltar:hover {
+            background-color: #6fa0c7;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
-    
+
 <form method="post">
-    <label for="selecao_mandante">Seleção Mandante:</label>
-    <input type="text" name="selecao_mandante" value="<?=$jogos['selecao_mandante'];?>" required><br>
 
-    <label for="gols_mandante">Gols Seleção Mandante:</label>
-    <input type="text" name="gols_mandante" value="<?=$jogos['gols_mandante'];?>" required><br>
+    <a href="../../index.php" class="btn-voltar">←</a>
 
-    <label for="selecao_visitante">Seleção Visitante:</label>
-    <input type="text" name="selecao_visitante" value="<?=$jogos['selecao_visitante'];?>" required><br>
+    <h2>Editar Jogo</h2>
 
-    <label for="gols_visitante">Gols Seleção Visitante:</label>
-    <input type="text" name="gols_visitante" value="<?=$jogos['gols_visitante'];?>" required><br>
+    <label>Seleção Mandante:</label>
+    <input type="text" name="selecao_mandante" value="<?=$jogos['selecao_mandante'];?>" required>
 
-    <label for="data">Data:</label>
-    <input type="text" name="data" value="<?=$jogos['data'];?>" required><br>
+    <label>Gols Mandante:</label>
+    <input type="text" name="gols_mandante" value="<?=$jogos['gols_mandante'];?>" required>
 
-    <label for="horario">Horário:</label>
-    <input type="text" name="horario" value="<?=$jogos['horario'];?>" required><br>
+    <label>Seleção Visitante:</label>
+    <input type="text" name="selecao_visitante" value="<?=$jogos['selecao_visitante'];?>" required>
 
-    <label for="estadio">Estádio:</label>
-    <input type="text" name="estadio" value="<?=$jogos['estadio'];?>" required><br>
+    <label>Gols Visitante:</label>
+    <input type="text" name="gols_visitante" value="<?=$jogos['gols_visitante'];?>" required>
 
-    <label for="grupo">Grupo:</label>
-    <input type="text" name="grupo" value="<?=$jogos['grupo'];?>" required><br>
+    <label>Data:</label>
+    <input type="text" name="data" value="<?=$jogos['data'];?>" required>
 
-    <input type="submit">
+    <label>Horário:</label>
+    <input type="text" name="horario" value="<?=$jogos['horario'];?>" required>
+
+    <label>Estádio:</label>
+    <input type="text" name="estadio" value="<?=$jogos['estadio'];?>" required>
+
+    <label>Grupo:</label>
+    <input type="text" name="grupo" value="<?=$jogos['grupo'];?>" required>
+
+    <input type="submit" value="Salvar">
 
 </form>
 
@@ -68,25 +156,32 @@ if(isset($_GET['id'])){
 </html>
 
 <?php
-
 } else {
     header('Location: listarjogo.php');
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $selecao_mandante = $_POST ['selecao_mandante'];
-    $gols_mandante = $_POST ['gols_mandante'];
-    $selecao_visitante = $_POST ['selecao_visitante'];
-    $gols_visitante = $_POST ['gols_visitante'];
-    $data = $_POST ['data'];
-    $horario = $_POST ['horario'];
-    $estadio = $_POST ['estadio'];
-    $grupo = $_POST ['grupo'];
+    $selecao_mandante = $_POST['selecao_mandante'];
+    $gols_mandante = $_POST['gols_mandante'];
+    $selecao_visitante = $_POST['selecao_visitante'];
+    $gols_visitante = $_POST['gols_visitante'];
+    $data = $_POST['data'];
+    $horario = $_POST['horario'];
+    $estadio = $_POST['estadio'];
+    $grupo = $_POST['grupo'];
 
-    $JogosController->editar($selecao_mandante, $gols_mandante, $selecao_visitante, $gols_visitante, $data, $horario, $estadio, $grupo, $id);
+    $JogosController->editar(
+        $selecao_mandante,
+        $gols_mandante,
+        $selecao_visitante,
+        $gols_visitante,
+        $data,
+        $horario,
+        $estadio,
+        $grupo,
+        $id
+    );
 
     header('Location: ../../index.php');
 }
-
-
 ?>

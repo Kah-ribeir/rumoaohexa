@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    
+</body>
+</html>
+
 <?php
 
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/DB/Database.php";
@@ -33,6 +47,18 @@ if(isset($_GET['id'])){
 
     <label for="gols_visitante">Gols Seleção Visitante:</label>
     <input type="text" name="gols_visitante" value="<?=$jogos['gols_visitante'];?>" required><br>
+
+    <label for="data">Data:</label>
+    <input type="text" name="data" value="<?=$jogos['data'];?>" required><br>
+
+    <label for="horario">Horário:</label>
+    <input type="text" name="horario" value="<?=$jogos['horario'];?>" required><br>
+
+    <label for="estadio">Estádio:</label>
+    <input type="text" name="estadio" value="<?=$jogos['estadio'];?>" required><br>
+
+    <label for="grupo">Grupo:</label>
+    <input type="text" name="grupo" value="<?=$jogos['grupo'];?>" required><br>
 
     <input type="submit">
 

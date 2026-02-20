@@ -3,26 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realizar cadastro</title>
+    <title>Cadastrar Grupo</title>
 
-    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #6b8fb3, #7da2c2);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .card {
+            background-color: #e5e7eb;
+            padding: 30px;
+            border-radius: 20px;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #6b8fb3;
+            color: white;
+            border: none;
+            margin-top: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5a7c9a;
+        }
+
+        .voltar {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background-color: #f1f5f9;
+            border-radius: 10px;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 
 <body>
-    
+
+<div class="card">
+
+    <a href="../../index.php" class="voltar">⬅</a>
+
     <form method="post">
-        <h1>⚽ Cadastrar Grupo </h1>
+        <h1>⚽ Cadastrar Grupo</h1>
 
-        <label for="nome">Nome do grupo</label>
-        <input type="text" name="grupo" placeholder="ex:Brasil" required>
+        <label>Nome do grupo</label>
+        <input type="text" name="grupo" placeholder="Ex: A" required>
 
-        
         <input type="submit" value="CADASTRAR">
     </form>
 
+</div>
+
 </body>
 </html>
-
 
 <?php
 
@@ -33,15 +100,10 @@ $GruposController = new GruposController($pdo);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
-  
-    $grupo = $_POST ['grupo'];
-   
-  
+    $grupo = $_POST['grupo'];
 
-    $GruposController->cadastrar( $grupo);
+    $GruposController->cadastrar($grupo);
 
     header('Location: ../../index.php');
 }
-
-
 ?>

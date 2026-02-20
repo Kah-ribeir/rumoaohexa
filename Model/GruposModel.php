@@ -29,10 +29,10 @@ class GrupoModel {
     }
 
 
-    public function editar($nome, $id) {
-        $sql = "UPDATE grupos SET nome=? WHERE id=?";
+    public function editar($grupo, $id) {
+        $sql = "UPDATE grupos SET grupo=? WHERE id=?";
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$nome, $id]);
+        return $stmt->execute([$grupo, $id]);
     }
 
    

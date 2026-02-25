@@ -1,9 +1,13 @@
 <?php
 
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/DB/Database.php";
+
 require_once "C:/Turma2/xampp/htdocs/rumoaohexa/Controller/SelecoesController.php";
+require_once "C:/Turma2/xampp/htdocs/rumoaohexa/View/Selecoes/buscarGrupos.php";
+
 
 $SelecoesController = new SelecoesController($pdo);
+$grupos = buscarGrupos($pdo);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
@@ -120,8 +124,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <label>Nome</label>
     <input type="text" name="nome" placeholder="Brasil" required>
 
+
     <label>Grupo</label>
-    <input type="text" name="grupo" placeholder="A" required>
+    <select name="grupo" required>
+        <option value="">Selecione o grupo</option>
+        <?php foreach($grupos as $grupo): ?>
+            <option value="<?= htmlspecialchars($grupo['grupo']) ?>"><?= htmlspecialchars($grupo['grupo']) ?></option>
+        <?php endforeach; ?>
+    </select>
 
     <label>Continente</label>
     <input type="text" name="continente" placeholder="América do Sul" required>
